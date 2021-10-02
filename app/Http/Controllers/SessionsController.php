@@ -19,10 +19,12 @@ class SessionsController extends Controller
             'password'  => 'required'
         ]);
 
-        if (Auth::attempt($credentials)) {
+        if (Auth::attempt($credentials, $request->has('remember'))) {
+            // 登录成功
             session()->flash('success', '欢迎回来！');
             return redirect()->route('users.show', [Auth::user()]);
         } else {
+            // 登录失败
             session()->flash('danger', '很抱歉，您的邮箱和账号不匹配');
             return redirect()->back()->withInput();
         }
