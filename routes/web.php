@@ -16,4 +16,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'StaticPagesController@home')->name('home');                        // 主页
 Route::get('help', 'StaticPagesController@help')->name('help');                    // 帮助
 Route::get('about', 'StaticPagesController@about')->name('about');                 // 关于
-Route::get('signup', 'UsersController@create')->name('signup');                     // 注册
+Route::get('signup', 'UsersController@create')->name('signup');                    // 注册
+Route::resource('users', 'UsersController');
+Route::get('users/{user}', 'UsersController@show')->name('user.show');           // 隐式路由绑定 用户信息
