@@ -24,3 +24,4 @@ Route::resource('users', 'UsersController');
 Route::get('users/{user}', 'UsersController@show')->name('users.show');             // 隐式路由绑定 用户信息
 Route::get('users/{user}/edit', 'UsersController@edit')->name('users.edit');        // 編輯用戶
 Route::patch('users/{user}', 'UsersController@update')->name('users.update');       // 更新
+Route::get('signup/confirm/{token}', 'UsersController@confirmEmail')->name('confirm_email');    // 激活账号验证
