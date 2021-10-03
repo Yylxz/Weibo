@@ -11,7 +11,7 @@ class UsersController extends Controller
     public function __construct()
     {
         $this->middleware('auth', [
-            'except'    => ['show', 'create', 'store']
+            'except'    => ['show', 'create', 'store', 'index']
         ]);
 
         // 未登录用户仅可访问注册页面
@@ -79,5 +79,14 @@ class UsersController extends Controller
         session()->flash('success', '个人资料更新成功！');
 
         return redirect()->route('users.show', [$user]);
+    }
+
+    public function index()
+    {
+        // $users = User::all();
+        $users = User::paginate(6);
+
+        return view('users.index', compact('users'));
+
     }
 }
