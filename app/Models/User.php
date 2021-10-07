@@ -90,7 +90,7 @@ class User extends Authenticatable
             $user_ids = compact('user_ids');
         }
 
-        $this->followings()->sync($user_ids, flase);
+        $this->followings()->sync($user_ids, false);
     }
 
     // 取关
