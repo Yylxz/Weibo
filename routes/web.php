@@ -30,3 +30,5 @@ Route::post('password/email', 'PasswordController@sendResetLinkEmail')->name('pa
 Route::get('password/reset/{token}', 'PasswordController@showResetForm')->name('password.reset');   // 显示更新密码表单
 Route::post('password/reset', 'PasswordController@reset')->name('password.update');                 // 更新密码
 Route::resource('statuses', 'StatusesController', ['only'   => ['store', 'destroy']]);
+Route::get('users/{user}/followings', 'UsersController@followings')->name('users.followings');      // 关注列表
+Route::get('users/{user}/followers', 'UsersController@followers')->name('users.followers');      // 粉丝列表
