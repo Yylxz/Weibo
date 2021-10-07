@@ -29,3 +29,4 @@ Route::get('password/reset', 'PasswordController@showLinkRequestForm')->name('pa
 Route::post('password/email', 'PasswordController@sendResetLinkEmail')->name('password.email');     // 处理email表单
 Route::get('password/reset/{token}', 'PasswordController@showResetForm')->name('password.reset');   // 显示更新密码表单
 Route::post('password/reset', 'PasswordController@reset')->name('password.update');                 // 更新密码
+Route::resource('statuses', 'StatusesController', ['only'   => ['store', 'destroy']]);
