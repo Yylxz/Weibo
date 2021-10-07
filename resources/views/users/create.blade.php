@@ -4,7 +4,7 @@
   <div class="offset-md-2 col-md-8">
     <div class="card ">
       <div class="card-header">
-        <h5>注册</h5>
+        <h5  class="text-center">Signup</h5>
       </div>
       <div class="card-body">
 
@@ -32,7 +32,7 @@
               <input type="password" name="password_confirmation" class="form-control" value="{{ old('password_confirmation') }}">
             </div>
 
-            <button type="submit" class="btn btn-primary">注册</button>
+            <button type="submit" class="btn btn-primary btn-block">注&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;册</button>
         </form>
       </div>
     </div>
