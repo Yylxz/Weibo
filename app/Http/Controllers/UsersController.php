@@ -20,6 +20,10 @@ class UsersController extends Controller
         $this->middleware('guest', [
             'only'  => ['create']
         ]);
+
+        $this->middleware('throttle:5,60', [
+            'only'  => ['store']
+        ]);
     }
 
     // 注册

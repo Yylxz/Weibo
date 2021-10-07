@@ -12,11 +12,23 @@ use Carbon\Carbon;
 
 class PasswordController extends Controller
 {
+    public function __construct()
+    {
+        // 1分钟2次
+        $this->middleware('throttle:2,1', [
+            'only'  => ['showLinkRequestForm']
+        ]);
+        // 10分钟3次
+        $this->middleware('throttle:3,10', [
+            'only'  => ['sendRestLinkEmail']
+        ]);
+    }
+
     public function showLinkRequestForm()
     {
         return view('auth.passwords.email');
     }
-
+    // 发送Email
     public function sendResetLinkEmail(Request $request)
     {
         $request->validate(['email' => 'required|email']);
@@ -52,6 +64,7 @@ class PasswordController extends Controller
         return view('auth.passwords.reset', compact('token'));
     }
 
+    // 重置
     public function reset(Request $request)
     {
         $request->validate([
